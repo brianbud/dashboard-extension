@@ -14,3 +14,21 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   text-shadow: 1px 1px 2px #000000;
 }
+
+main {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.middle {
+  display: flex;
+  justify-content: center;
+}
