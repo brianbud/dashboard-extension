@@ -8,7 +8,7 @@ async function getBgImage() {
     const data = await res.json();
 
     document.body.style.backgroundImage = `url(${data.urls.regular})`;
-    authorEl.innerHTML = `<h3>by: ${data.user.name}</h3>`;
+    authorEl.innerHTML = `<h3>picture by: ${data.user.name}</h3>`;
   } catch (err) {
     console.log(err);
     document.body.style.backgroundImage = `url("https://source.unsplash.com/random?orientation=landscape&query=nature")`;
@@ -32,6 +32,11 @@ async function getStockPrice() {
     let currentDate = `${year}-${month}-${day}`;
     console.log(data);
     console.log(data['Time Series (Daily)'][currentDate]);
+    const stockTitle = document.querySelector('#stock');
+    stockTitle.innerHTML = `<h2>${data['Meta Data']['2. Symbol'].slice(
+      0,
+      -4
+    )}</h2>`;
   } catch {
     console.log(err);
   }
