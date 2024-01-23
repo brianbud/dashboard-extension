@@ -33,13 +33,20 @@ async function getStockPrice() {
     console.log(data);
     console.log(data['Time Series (Daily)'][currentDate]);
     const stockTitle = document.querySelector('#stock');
-    stockTitle.innerHTML = `<h2>${data['Meta Data']['2. Symbol'].slice(
-      0,
-      -4
-    )}</h2>`;
+    stockTitle.innerHTML = `
+      <h2>${data['Meta Data']['2. Symbol'].slice(0, -4)}</h2>
+      <p>High:</p>
+      <p>Low:</p>`;
   } catch {
     console.log(err);
   }
 }
+
+function getTime() {
+  const time = new Date().toLocaleTimeString('en-us', { timeStyle: 'short' });
+  document.querySelector('.time').innerHTML = `<h1>${time}</h1>`;
+  console.log(time);
+}
+getTime();
 
 getStockPrice();
