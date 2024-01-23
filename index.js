@@ -43,10 +43,10 @@ async function getStockPrice() {
 }
 
 function getTime() {
-  const time = new Date().toLocaleTimeString('en-us', { timeStyle: 'short' });
+  const time = new Date().toLocaleTimeString('en-us', { timeStyle: 'medium' });
   document.querySelector('.time').innerHTML = `<h1>${time}</h1>`;
-  console.log(time);
 }
-getTime();
+
+setInterval(getTime, 1000);
 
 getStockPrice();
