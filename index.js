@@ -68,6 +68,13 @@ if ('geolocation' in navigator) {
       })
       .then((data) => {
         console.log(data);
+        const icon = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+        document.querySelector('#weather').innerHTML = `
+          <img src=${icon} />
+          <p>Feels like: ${Math.round(data.main.feels_like)} °C</p>
+          <p>${data.name}</p>
+        `;
+        console.log(icon);
       })
       .catch((err) => console.log(err));
   });
