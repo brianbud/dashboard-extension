@@ -35,8 +35,14 @@ async function getStockPrice() {
     const stockTitle = document.querySelector('#stock');
     stockTitle.innerHTML = `
       <h2>${data['Meta Data']['2. Symbol'].slice(0, -4)}</h2>
-      <p>High:</p>
-      <p>Low:</p>`;
+      <p>High: ${data['Time Series (Daily)'][currentDate]['2. high'].slice(
+        0,
+        -2
+      )}</p>
+      <p>Low: ${data['Time Series (Daily)'][currentDate]['3. low'].slice(
+        0,
+        -2
+      )}</p>`;
   } catch {
     console.log(err);
   }
