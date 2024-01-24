@@ -30,8 +30,6 @@ async function getStockPrice() {
     let month = (date.getMonth() + 1).toString().padStart(2, '0');
     let year = date.getFullYear();
     let currentDate = `${year}-${month}-${day}`;
-    console.log(data);
-    console.log(data['Time Series (Daily)'][currentDate]);
     const stockTitle = document.querySelector('#stock');
     stockTitle.innerHTML = `
       <h2>${data['Meta Data']['2. Symbol'].slice(0, -4)}</h2>
@@ -56,3 +54,15 @@ function getTime() {
 setInterval(getTime, 1000);
 
 getStockPrice();
+
+if ('geolocation' in navigator) {
+  navigator.geolocation.getCurrentPosition(success);
+  function success(pos) {
+    const crd = pos.coords;
+    console.log(' your current position is');
+    console.log(`Latitude: ${crd.latitude}`);
+    console.log(`Longitude: ${crd.longitude}`);
+  }
+} else {
+  console.log('geolocation is not available');
+}
