@@ -56,13 +56,21 @@ setInterval(getTime, 1000);
 getStockPrice();
 
 if ('geolocation' in navigator) {
-  navigator.geolocation.getCurrentPosition(success);
-  function success(pos) {
-    const crd = pos.coords;
-    console.log(' your current position is');
-    console.log(`Latitude: ${crd.latitude}`);
-    console.log(`Longitude: ${crd.longitude}`);
-  }
+  navigator.geolocation.getCurrentPosition((position) => {
+    fetch(
+      `https://apis.scrimba.com/openweathermap/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=metric`
+    )
+      .then((res) => {
+        if (!res.ok) {
+          throw Error('Weather api data not available');
+        }
+        return res.json();
+      })
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((err) => console.log(err));
+  });
 } else {
   console.log('geolocation is not available');
 }
