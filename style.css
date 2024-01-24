@@ -37,3 +37,19 @@ main {
   display: flex;
   justify-content: center;
 }
+
+#weather div {
+  display: flex;
+  align-items: center;
+  font-size: 2rem;
+}
+
+#weather img {
+  width: 5rem;
+}
+
+#weather > p {
+  text-align: right;
+  margin-top: -1rem;
+  margin-bottom: 0;
+}

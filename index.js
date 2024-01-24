@@ -70,8 +70,10 @@ if ('geolocation' in navigator) {
         console.log(data);
         const icon = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
         document.querySelector('#weather').innerHTML = `
+          <div>
           <img src=${icon} />
-          <p>Feels like: ${Math.round(data.main.feels_like)} °C</p>
+          <p>${Math.round(data.main.temp)} °C</p>
+          </div>
           <p>${data.name}</p>
         `;
         console.log(icon);
