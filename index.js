@@ -1,4 +1,5 @@
 const authorEl = document.querySelector('#author');
+const tickerEl = document.querySelector('#ticker');
 
 async function getBgImage() {
   try {
@@ -67,7 +68,6 @@ if ('geolocation' in navigator) {
         return res.json();
       })
       .then((data) => {
-        console.log(data);
         const icon = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
         document.querySelector('#weather').innerHTML = `
           <div>
@@ -76,7 +76,6 @@ if ('geolocation' in navigator) {
           </div>
           <p>${data.name}</p>
         `;
-        console.log(icon);
       })
       .catch((err) => console.log(err));
   });
